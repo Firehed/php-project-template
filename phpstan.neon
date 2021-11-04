@@ -3,9 +3,8 @@ includes:
     - vendor/phpstan/phpstan-phpunit/extension.neon
     - vendor/phpstan/phpstan-strict-rules/rules.neon
 parameters:
-    ignoreErrors:
-        - '#^Dynamic call to static method PHPUnit\\Framework\\Assert::assert#'
+    excludePaths:
+        - vendor
     level: max
     paths:
-        - src
-        - tests
+        - .

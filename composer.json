@@ -28,7 +28,8 @@
         "php": "^8.1",
         "doctrine/migrations": "^3.3",
         "doctrine/orm": "^2.10",
-        "firehed/container": "^0.5"
+        "firehed/container": "^0.5",
+        "vlucas/phpdotenv": "^5.3"
     },
     "require-dev": {
         "phpstan/phpstan": "^1.0",

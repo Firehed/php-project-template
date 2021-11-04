@@ -36,9 +36,7 @@ jobs:
           server-stage: server
 
       - name: Prep testenv
-        run: |
-          env > .env
-          mkdir coverage
+        run: mkdir coverage
 
       - name: PHPUnit
         continue-on-error: true

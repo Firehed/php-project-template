@@ -30,6 +30,8 @@ Repository template for PHP projects. Sets up composer, docker builds CI with Gi
 CI is configured using Github Actions.
 
 - PHPUnit `^9.3` with default configuration (`src`/`tests`).
+    - Produces code coverage report
+    - Uploads to `codecov`
 - PHPStan with strict ruleset, max level, and the PHPUnit extension
 - PHP Code Sniffer configured with PSR-12
 - Builds and pushes Docker images. The `server` stage is what you'll want to run

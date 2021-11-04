@@ -16,12 +16,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Your\\Library\\": "src"
+            "Your\\Project\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Your\\Library\\": "tests"
+            "Your\\Project\\": "tests"
         }
     },
     "require": {

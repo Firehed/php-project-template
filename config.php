@@ -11,7 +11,6 @@ if ($compile) {
 
 $blocklist = [
     'config/cli-config.php', // Doctrine ORM
-    'config/migrations.php', // Doctrine Migrations
 ];
 
 $files = glob('config/*.php');

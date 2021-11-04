@@ -2,8 +2,8 @@
     "name": "your/project",
     "description": "Description of your project",
     "keywords": [],
-    "type": "library",
-    "license": "MIT",
+    "type": "project",
+    "license": "proprietary",
     "authors": [
         {
             "name": "Your Name",

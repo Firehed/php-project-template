@@ -10,6 +10,10 @@ Repository template for PHP projects. Sets up composer, docker builds CI with Gi
 - Includes PHPUnit, PHPCS, and PHPStan
 - All are preconfigured and run during CI (See below)
 
+### Configuration
+- Provides a PSR-11 container for DI
+- Sets up support for `.env`
+
 ## Git
 - Configures `.gitignore` for common excludes in a PHP project
 

@@ -5,6 +5,7 @@
 Dockerfile
 .dockerignore
 .env
+.env.example
 docker-compose.yml
 
 # Files copied from .gitignore

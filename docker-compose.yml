@@ -1,0 +1,33 @@
+version: '3.4'
+services:
+  http:
+    build:
+      context: .
+      target: server
+    depends_on:
+      - mysql
+    restart: always
+    ports:
+      # Publishes the container's port 6543 (from its dockerfile) to local port
+      # 8080, so you can access `http://localhost:8080`.
+      - 8080:6543
+    volumes:
+      - ./:/app:delegated
+
+  mysql:
+    environment:
+      MYSQL_ROOT_PASSWORD: myapp
+      MYSQL_DATABASE: myapp
+      MYSQL_USER: myapp
+      MYSQL_PASSWORD: myapp
+    image: mysql:8
+    ports:
+      # Publishes MySQL port 3306 on the same local port. This makes it easier
+      # to use database GUIs and the mysql CLI from your dev machine.
+      # This is _not_ required to run.
+      - 3306:3306
+    volumes:
+      - mysql:/var/lib/mysql
+
+volumes:
+  mysql:

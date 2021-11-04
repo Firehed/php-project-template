@@ -10,3 +10,5 @@ docker-compose.yml
 # Files copied from .gitignore
 vendor
 .phpunit.result.cache
+.env
+.generated

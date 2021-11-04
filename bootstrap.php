@@ -11,3 +11,10 @@ ini_set('error_reporting', (string)E_ALL);
 ini_set('log_errors', '1');
 
 require 'vendor/autoload.php';
+
+if (file_exists(__DIR__ . '/.env')) {
+    // unsafe: uses .env to putenv() the values to getenv() and the superglobals
+    // mutable: .env wins over native environment
+    $dotenv = Dotenv\Dotenv::createUnsafeMutable(__DIR__);
+    $dotenv->load();
+}

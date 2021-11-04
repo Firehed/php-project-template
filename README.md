@@ -6,6 +6,10 @@ Repository template for PHP projects. Sets up composer, docker builds CI with Gi
 - Includes `apcu` and `opcache` extensions for performance
 - Includes `pdo-mysql` as a default database connector
 
+### Code Quality
+- Includes PHPUnit, PHPCS, and PHPStan
+- All are preconfigured and run during CI (See below)
+
 ## Git
 - Configures `.gitignore` for common excludes in a PHP project
 

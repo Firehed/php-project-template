@@ -27,11 +27,11 @@ RUN pecl install xdebug \
 
 FROM composer:2 AS dependencies
 COPY composer.json composer.lock ./
-RUN composer install --no-dev
+RUN composer install --ignore-platform-reqs no-dev --no-interaction
 
 
 FROM dependencies AS dev-dependencies
-RUN composer install
+RUN composer install --ignore-platform-reqs --no-interaction
 
 
 FROM env AS server

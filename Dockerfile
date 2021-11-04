@@ -35,6 +35,7 @@ RUN composer install --ignore-platform-reqs --no-interaction
 
 
 FROM env AS server
+ENV ENVIRONMENT=production
 COPY --chown=php:php-users --from=dependencies /app/vendor ./vendor
 COPY --chown=php:php-users . .
 # This runs the built-in web server as an initial starting point, as to avoid

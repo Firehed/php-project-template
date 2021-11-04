@@ -1,6 +1,6 @@
 {
-    "name": "your/library",
-    "description": "Description of your library",
+    "name": "your/project",
+    "description": "Description of your project",
     "keywords": [],
     "type": "library",
     "license": "MIT",
@@ -25,7 +25,7 @@
         }
     },
     "require": {
-        "php": "^7.3 || ^8.0"
+        "php": "^8.1"
     },
     "require-dev": {
         "phpstan/phpstan": "^1.0",

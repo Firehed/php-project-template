@@ -10,6 +10,10 @@ Repository template for PHP projects. Sets up composer, docker builds CI with Gi
 - Includes PHPUnit, PHPCS, and PHPStan
 - All are preconfigured and run during CI (See below)
 
+### Configuration
+- Provides a PSR-11 container for DI
+- Sets up support for `.env`
+
 ## Git
 - Configures `.gitignore` for common excludes in a PHP project
 
@@ -25,6 +29,11 @@ Repository template for PHP projects. Sets up composer, docker builds CI with Gi
 - Scripts for testing
 - Requires current version of PHP
 - Includes testing tools (configured) as dev dependencies
+
+## Database
+- Comes with MySQL 8 in docker-compose, and the application configured to connect to it
+- Comes with `doctrine/orm` pre-configured (using PHP 8 Attributes)
+- Comes with `doctrine/migrations` pre-configured for schema changes
 
 ## Testing and CI
 CI is configured using Github Actions.

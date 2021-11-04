@@ -26,6 +26,11 @@ Repository template for PHP projects. Sets up composer, docker builds CI with Gi
 - Requires current version of PHP
 - Includes testing tools (configured) as dev dependencies
 
+## Database
+- Comes with MySQL 8 in docker-compose, and the application configured to connect to it
+- Comes with `doctrine/orm` pre-configured (using PHP 8 Attributes)
+- Comes with `doctrine/migrations` pre-configured for schema changes
+
 ## Testing and CI
 CI is configured using Github Actions.
 

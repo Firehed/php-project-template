@@ -1,0 +1,12 @@
+# Docker-specific items
+.git
+.github
+.gitignore
+Dockerfile
+.dockerignore
+.env
+docker-compose.yml
+
+# Files copied from .gitignore
+vendor
+.phpunit.result.cache

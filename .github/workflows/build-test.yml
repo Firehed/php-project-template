@@ -9,6 +9,11 @@ on:
 
 env:
   CI: "true"
+  # This defaults to the Github Container Registry. You may want to change it
+  # to a different location.
+  REGISTRY: ghcr.io
+  # You MUST change the value below for your project
+  REPOSITORY: firehed/php-registry-template
 
 jobs:
   build:
@@ -17,12 +22,10 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v2
 
-      # If you want to use a different registry for your docker image, you will
-      # need to customize the registry settings on the next two steps.
-      - name: Auth to GH registry
+      - name: Auth to docker registry
         uses: docker/login-action@v1
         with:
-          registry: ghcr.io
+          registry: ${{ env.REGISTRY }}
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
@@ -30,7 +33,7 @@ jobs:
         id: build
         uses: firehed/multistage-docker-build-action@v1
         with:
-          repository: ghcr.io/${{ github.repository }}
+          repository: ${{ env.REGISTRY }}/${{ env.REPOSITORY }}
           stages: env, env-with-xdebug, dependencies, dev-dependencies
           testenv-stage: testenv
           server-stage: server

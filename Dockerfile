@@ -38,6 +38,8 @@ FROM env AS server
 ENV ENVIRONMENT=production
 COPY --chown=php:php-users --from=dependencies /app/vendor ./vendor
 COPY --chown=php:php-users . .
+RUN mkdir .generated
+RUN DATABASE_URL= vendor/bin/doctrine orm:generate-proxies
 # This runs the built-in web server as an initial starting point, as to avoid
 # making strong opinions about how best to deploy. For anything other than local
 # development, you'll want to run a "real" server.

@@ -16,10 +16,10 @@ services:
 
   mysql:
     environment:
-      MYSQL_ROOT_PASSWORD: myapp
-      MYSQL_DATABASE: myapp
-      MYSQL_USER: myapp
-      MYSQL_PASSWORD: myapp
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: dbname
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
     image: mysql:8
     ports:
       # Publishes MySQL port 3306 on the same local port. This makes it easier

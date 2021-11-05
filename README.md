@@ -25,6 +25,9 @@ Whether you like this as-is or want to swap out basically everything, there are 
   There are comments in the Dockerfile detailing this, including recommended alternatives.
   Since this decision tends to be infrastructure-specific, it was intentionally left un-opinionated.
 
+- The docker repository for building in CI needs to be changed.
+  Update `REPOSITORY` in `.github/workflows/build-test.yml` to do so.
+
 - Composer has some placeholder values in place that you'll want to fill in:
   - `name`
   - `description`

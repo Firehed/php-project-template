@@ -42,20 +42,28 @@ Whether you like this as-is or want to swap out basically everything, there are 
 - `public/index.php` is only a basic "Hello, World!" that includes the bootstrap file.
   That's pretty useless, but what you need is entirely framework-dependent.
 
+- Database migration config (`/migrations.php`) needs a namespace set.
+  It should match the value you set in `composer.json`.
+
 #### Highly-recommended changes
 
 - No logger is provided or configured.
   Whatever you select should write to `STDOUT` (or `/dev/stdout`), as that's where Docker wants messages to go.
+  `error_log()` should work out of the box, but any modern project will benefit from a PSR-3 logger.
+
 - No global/fallback error handling is configred.
   You should set one up with `set_exception_handler` in `bootstrap.php`.
 
 #### Optional changes
 
 - You may want to adjust the `PORT` in the Dockerfile and docker-compose
+
 - You may want a different version of PHP (though for a new project, there's little reason to not use the latest one)
+
 - Doctrine (if you keep it) uses the new PHP 8 `Attribute` driver.
   This varies from the documentation default, which uses the annotation driver (`/** @Entity */`, etc)
   It and other Doctrine settings are in `config/doctrine.php`.
+
 - Default
 
 ---

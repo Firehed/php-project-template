@@ -20,6 +20,11 @@ Whether you like this as-is or want to swap out basically everything, there are 
 
 #### Required changes
 
+- The included Dockerfile for the application's server uses the built-in PHP web-server.
+  This is **not suitable** at all for production deployments.
+  There are comments in the Dockerfile detailing this, including recommended alternatives.
+  Since this decision tends to be infrastructure-specific, it was intentionally left un-opinionated.
+
 - Composer has some placeholder values in place that you'll want to fill in:
   - `name`
   - `description`
@@ -32,12 +37,7 @@ Whether you like this as-is or want to swap out basically everything, there are 
 
 - This supports `.env`, but only includes an example file.
   Copy `.env.example` to `.env` in the project root (and set values as needed).
-  The `DATABASE_URL` value
-
-- The included Dockerfile for the application's server uses the built-in PHP web-server.
-  This is not suitable at all for production deployments.
-  There are comments in the Dockerfile detailing this, including recommended alternatives.
-  Since this decision tends to be infrastructure-specific, it was intentionally left un-opinionated.
+  The `DATABASE_URL` value must match the `docker-compose` file's contents.
 
 - `public/index.php` is only a basic "Hello, World!" that includes the bootstrap file.
   That's pretty useless, but what you need is entirely framework-dependent.

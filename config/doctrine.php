@@ -4,25 +4,25 @@ declare(strict_types=1);
 
 // Doctrine Setup
 
-use Cache\Adapter\Apcu\ApcuCachePool;
-use Cache\Adapter\PHPArray\ArrayCachePool;
 use Doctrine\Common\Cache\Psr6\DoctrineProvider;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\Driver\AttributeDriver;
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\Persistence\Mapping\Driver\MappingDriver;
+use Psr\Cache\CacheItemPoolInterface;
+use Symfony\Component\Cache\Adapter\{ApcuAdapter, ArrayAdapter};
 
 use function Firehed\Container\env;
 
 return [
     'database_url' => env('DATABASE_URL'),
 
-    'localPsr6Cache' => function ($c) {
+    'localPsr6Cache' => function ($c): CacheItemPoolInterface {
         if ($c->get('isDevMode')) {
-            return new ArrayCachePool();
+            return new ArrayAdapter();
         } else {
-            return new ApcuCachePool();
+            return new ApcuAdapter();
         }
     },
     // Attribute driver docs:

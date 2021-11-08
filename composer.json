@@ -50,6 +50,7 @@
         "phpunit": "phpunit",
         "phpstan": "phpstan analyse",
         "phpstan-baseline": "phpstan analyse --generate-baseline",
-        "phpcs": "phpcs"
+        "phpcs": "phpcs",
+        "crc": "composer-require-checker --config-file=config/composer-require-checker.json"
     }
 }

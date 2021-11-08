@@ -76,7 +76,7 @@ jobs:
           name: Composer require checker
           token: ${{ secrets.GITHUB_TOKEN }}
           image: ${{ steps.build.outputs.testenv-tag }}
-          command: vendor/bin/composer-require-checker
+          command: vendor/bin/composer-require-checker --config-file=config/composer-require-checker.json
 
       - name: Upload code coverage
         uses: codecov/codecov-action@v2

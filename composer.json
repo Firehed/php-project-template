@@ -33,6 +33,7 @@
         "vlucas/phpdotenv": "^5.3"
     },
     "require-dev": {
+        "maglnet/composer-require-checker": "^3.4",
         "phpstan/phpstan": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
         "phpstan/phpstan-strict-rules": "^1.0",

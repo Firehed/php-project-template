@@ -69,6 +69,15 @@ jobs:
           image: ${{ steps.build.outputs.testenv-tag }}
           command: vendor/bin/phpcs -v
 
+      - name: Require checker
+        continue-on-error: true
+        uses: firehed/docker-check-action@v1
+        with:
+          name: Composer require checker
+          token: ${{ secrets.GITHUB_TOKEN }}
+          image: ${{ steps.build.outputs.testenv-tag }}
+          command: vendor/bin/composer-require-checker
+
       - name: Upload code coverage
         uses: codecov/codecov-action@v2
         if: always()

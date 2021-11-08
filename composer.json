@@ -26,11 +26,10 @@
     },
     "require": {
         "php": "^8.1",
-        "cache/apcu-adapter": "^1.1",
-        "cache/array-adapter": "^1.1",
         "doctrine/migrations": "^3.3",
         "doctrine/orm": "^2.10",
         "firehed/container": "^0.5",
+        "symfony/cache": "^5.3",
         "vlucas/phpdotenv": "^5.3"
     },
     "require-dev": {

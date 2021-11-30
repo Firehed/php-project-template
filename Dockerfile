@@ -1,4 +1,3 @@
-# Alpine3.13 needed or xdebug install fails
 FROM php:8.1.0-alpine3.15 AS env
 # Install core dependencies
 RUN apk add --no-cache $PHPIZE_DEPS

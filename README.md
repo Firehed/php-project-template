@@ -2,7 +2,7 @@
 Repository template for PHP projects. Sets up composer, docker builds CI with Github Actions, and more.
 
 ## PHP
-- Ships with version `8.1` (RC5 right now)
+- Ships with version `8.1`
 - Includes `apcu` and `opcache` extensions for performance
 - Includes `pdo-mysql` as a default database connector
 

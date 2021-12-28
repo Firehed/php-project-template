@@ -51,6 +51,8 @@ RUN DATABASE_URL= vendor/bin/doctrine orm:generate-proxies
 # - ReactPHP: https://reactphp.org
 # - RoadRunner: https://roadrunner.dev
 # - Swoole: https://www.swoole.co.uk
+# This env var is specific to the built-in server, and should be removed with any other option
+ENV PHP_CLI_SERVER_WORKERS=8
 CMD php -S 0.0.0.0:$PORT public/index.php
 
 

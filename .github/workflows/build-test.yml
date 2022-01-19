@@ -19,6 +19,7 @@ env:
 # https://github.blog/changelog/2021-10-06-github-actions-workflows-triggered-by-dependabot-prs-will-respect-permissions-key-in-workflows/
 permissions:
   checks: write
+  packages: write
 
 jobs:
   build:

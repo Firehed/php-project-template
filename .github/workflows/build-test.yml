@@ -15,6 +15,14 @@ env:
   # You MUST change the value below for your project
   REPOSITORY: firehed/php-registry-template
 
+# Ensure docker-check-action works when run via Dependabot
+# https://github.blog/changelog/2021-10-06-github-actions-workflows-triggered-by-dependabot-prs-will-respect-permissions-key-in-workflows/
+permissions:
+  checks: write
+  # If using this template in a private repository, uncomment the following line (otherwise repo checkout fails)
+  # contents: read
+  packages: write
+
 jobs:
   build:
     runs-on: ubuntu-latest

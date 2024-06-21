@@ -1,0 +1,9 @@
+{
+    "scan-files": [
+        "bootstrap.php",
+        "config.php",
+        "config/*.php",
+        "public/*.php",
+        "migrations.php"
+    ]
+}

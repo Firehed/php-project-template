@@ -1,6 +1,77 @@
 # php-project-template
 Repository template for PHP projects. Sets up composer, docker builds CI with Github Actions, and more.
 
+## How to use this
+
+The easiest way to use this is clicking the green "use this template" button on Github, or use [this link](https://github.com/Firehed/php-project-template/generate).
+You may also want to manually clone it (e.g. for use outside of Github).
+
+If desired, you can cherry-pick components and/or configuration settings to manually use with your existing project.
+It's totally up to you!
+
+This template assumes you're already generally familar with the PHP ecosystem, along with [commonly accepted best practices](https://phptherightway.com).
+
+### Configuration & Setup
+
+This template is somewhat opinionated in order to provide a useful starting point for projects.
+If your opinions differ, that's fine!
+Feel free to adjust packages, settings, and anything else you want after creating a project from this template.
+Whether you like this as-is or want to swap out basically everything, there are still some **required** modifications for this to be useful:
+
+#### Required changes
+
+- The included Dockerfile for the application's server uses the built-in PHP web-server.
+  This is **not suitable** at all for production deployments.
+  There are comments in the Dockerfile detailing this, including recommended alternatives.
+  Since this decision tends to be infrastructure-specific, it was intentionally left un-opinionated.
+
+- The docker repository for building in CI needs to be changed.
+  Update `REPOSITORY` in `.github/workflows/build-test.yml` to do so.
+
+- Composer has some placeholder values in place that you'll want to fill in:
+  - `name`
+  - `description`
+  - `license` (see footnote)
+  - `authors`
+  - `autoload` and `autoload-dev` namespaces
+
+- `docker-compose` has some pre-filled values for credentials and connection info.
+  You'll want to modify them (`MYSQL_*`) to something better suited to your project.
+
+- This supports `.env`, but only includes an example file.
+  Copy `.env.example` to `.env` in the project root (and set values as needed).
+  The `DATABASE_URL` value must match the `docker-compose` file's contents.
+
+- `public/index.php` is only a basic "Hello, World!" that includes the bootstrap file.
+  That's pretty useless, but what you need is entirely framework-dependent.
+
+- Database migration config (`/migrations.php`) needs a namespace set.
+  It should match the value you set in `composer.json`.
+
+#### Highly-recommended changes
+
+- No logger is provided or configured.
+  Whatever you select should write to `STDOUT` (or `/dev/stdout`), as that's where Docker wants messages to go.
+  `error_log()` should work out of the box, but any modern project will benefit from a PSR-3 logger.
+
+- No global/fallback error handling is configred.
+  You should set one up with `set_exception_handler` in `bootstrap.php`.
+
+#### Optional changes
+
+- You may want to adjust the `PORT` in the Dockerfile and docker-compose
+
+- You may want a different version of PHP (though for a new project, there's little reason to not use the latest one)
+
+- Doctrine (if you keep it) uses the new PHP 8 `Attribute` driver.
+  This varies from the documentation default, which uses the annotation driver (`/** @Entity */`, etc)
+  It and other Doctrine settings are in `config/doctrine.php`.
+
+- Default
+
+---
+# What's Included
+
 ## PHP
 - Ships with version `8.1`
 - Includes `apcu` and `opcache` extensions for performance
@@ -44,3 +115,13 @@ CI is configured using Github Actions.
 - PHPStan with strict ruleset, max level, and the PHPUnit extension
 - PHP Code Sniffer configured with PSR-12
 - Builds and pushes Docker images. The `server` stage is what you'll want to run
+
+---
+## License
+This template is MIT licensed.
+There is a `LICENSE` file in the repository root matching that.
+
+Projects using this template (in part or in whole) are free to use any license they desire, so long as it's compatible with the licenses of the dependencies.
+Such uses are not required to retain the `LICENSE` file or copyright notices - although credit is appreciated.
+
+Forks of this template (intended for use as a template on their own) must adhere to the license of the template itself, including retention of the copyright notice(s).

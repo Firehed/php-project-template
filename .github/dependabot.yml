@@ -17,3 +17,16 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+
+  # Base images in the Dockerfile
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "daily"
+
+  # Service images in docker-compose.yml. Separate from "docker" above; the two
+  # ecosystems do not read each other's files.
+  - package-ecosystem: "docker-compose"
+    directory: "/"
+    schedule:
+      interval: "daily"

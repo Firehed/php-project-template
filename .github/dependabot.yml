@@ -10,6 +10,11 @@ updates:
     schedule:
       interval: "daily"
     versioning-strategy: increase
+    # Majors are deliberately left ungrouped so each gets its own reviewable PR.
+    groups:
+      composer-minor-and-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
 
   # Keep Github Actions up to date
   # https://docs.github.com/en/code-security/dependabot/working-with-dependabot/keeping-your-actions-up-to-date-with-dependabot
@@ -17,6 +22,10 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    groups:
+      actions-minor-and-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
 
   # Base images in the Dockerfile
   - package-ecosystem: "docker"

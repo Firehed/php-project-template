@@ -1,4 +1,4 @@
-FROM php:8.1.0-alpine3.15 AS env
+FROM php:8.4.24-alpine AS env
 # Install core dependencies
 RUN apk add --no-cache $PHPIZE_DEPS
 RUN pecl install apcu && docker-php-ext-enable apcu

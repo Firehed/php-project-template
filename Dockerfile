@@ -19,6 +19,8 @@ RUN addgroup php-users && adduser -D -G php-users php
 
 
 FROM env AS env-with-xdebug
+# xdebug's configure step needs linux/rtnetlink.h, which $PHPIZE_DEPS omits.
+RUN apk add --no-cache linux-headers
 # XDebug settings for coverage
 RUN pecl install xdebug \
   && echo 'zend_extension=xdebug.so' > ${PHP_INI_DIR}/conf.d/xdebug.ini

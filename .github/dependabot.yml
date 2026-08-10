@@ -8,7 +8,7 @@ updates:
   - package-ecosystem: "composer"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     versioning-strategy: increase
     # Majors are deliberately left ungrouped so each gets its own reviewable PR.
     groups:
@@ -21,7 +21,7 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     groups:
       actions-minor-and-patch:
         patterns: ["*"]
@@ -31,11 +31,11 @@ updates:
   - package-ecosystem: "docker"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
 
   # Service images in docker-compose.yml. Separate from "docker" above; the two
   # ecosystems do not read each other's files.
   - package-ecosystem: "docker-compose"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"

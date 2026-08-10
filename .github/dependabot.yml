@@ -8,12 +8,34 @@ updates:
   - package-ecosystem: "composer"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     versioning-strategy: increase
+    # Majors are deliberately left ungrouped so each gets its own reviewable PR.
+    groups:
+      composer-minor-and-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
 
   # Keep Github Actions up to date
   # https://docs.github.com/en/code-security/dependabot/working-with-dependabot/keeping-your-actions-up-to-date-with-dependabot
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+    groups:
+      actions-minor-and-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+
+  # Base images in the Dockerfile
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+  # Service images in docker-compose.yml. Separate from "docker" above; the two
+  # ecosystems do not read each other's files.
+  - package-ecosystem: "docker-compose"
+    directory: "/"
+    schedule:
+      interval: "weekly"

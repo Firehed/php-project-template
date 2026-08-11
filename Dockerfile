@@ -1,4 +1,4 @@
-FROM php:8.1.0-alpine3.15 AS env
+FROM php:8.4.24-alpine AS env
 # Install core dependencies
 RUN apk add --no-cache $PHPIZE_DEPS
 RUN pecl install apcu && docker-php-ext-enable apcu
@@ -19,6 +19,8 @@ RUN addgroup php-users && adduser -D -G php-users php
 
 
 FROM env AS env-with-xdebug
+# xdebug's configure step needs linux/rtnetlink.h, which $PHPIZE_DEPS omits.
+RUN apk add --no-cache linux-headers
 # XDebug settings for coverage
 RUN pecl install xdebug \
   && echo 'zend_extension=xdebug.so' > ${PHP_INI_DIR}/conf.d/xdebug.ini

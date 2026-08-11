@@ -28,7 +28,7 @@
         "php": "^8.4",
         "doctrine/migrations": "^3.3",
         "doctrine/orm": "^2.10",
-        "firehed/container": "^0.5",
+        "firehed/container": "^1.1",
         "symfony/cache": "^5.3",
         "vlucas/phpdotenv": "^5.3"
     },

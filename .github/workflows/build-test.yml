@@ -78,7 +78,7 @@ jobs:
           command: vendor/bin/phpcs -v
 
       - name: Upload code coverage
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v7
         if: always()
         with:
           token: ${{ secrets.CODECOV_TOKEN }}

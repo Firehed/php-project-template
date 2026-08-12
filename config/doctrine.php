@@ -10,6 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\Driver\AttributeDriver;
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\Persistence\Mapping\Driver\MappingDriver;
+use Firehed\Container\TypedContainerInterface;
 use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Component\Cache\Adapter\{ApcuAdapter, ArrayAdapter};
 
@@ -18,8 +19,8 @@ use function Firehed\Container\env;
 return [
     'database_url' => env('DATABASE_URL'),
 
-    'localPsr6Cache' => function ($c): CacheItemPoolInterface {
-        if ($c->get('isDevMode')) {
+    'localPsr6Cache' => function (TypedContainerInterface $c): CacheItemPoolInterface {
+        if ($c->getBool('isDevMode')) {
             return new ArrayAdapter();
         } else {
             return new ApcuAdapter();
@@ -29,12 +30,14 @@ return [
     // https://www.doctrine-project.org/projects/doctrine-orm/en/2.10/reference/attributes-reference.html
     MappingDriver::class => fn() => new AttributeDriver(['src']),
 
-    EntityManagerInterface::class => function ($c) {
-        $isDevMode = $c->get('isDevMode');
+    EntityManagerInterface::class => function (TypedContainerInterface $c): EntityManagerInterface {
+        $isDevMode = $c->getBool('isDevMode');
 
         $proxyDir = '.generated/doctrine-proxies';
 
-        $cache = DoctrineProvider::wrap($c->get('localPsr6Cache'));
+        $psr6Cache = $c->get('localPsr6Cache');
+        assert($psr6Cache instanceof CacheItemPoolInterface);
+        $cache = DoctrineProvider::wrap($psr6Cache);
 
         $config = Setup::createConfiguration(
             isDevMode: $isDevMode,
@@ -52,7 +55,7 @@ return [
             'driverClass' => \Doctrine\DBAL\Driver\PDO\MySQL\Driver::class,
             'driverOptions' => [],
 
-            'url' => $c->get('database_url'),
+            'url' => $c->getString('database_url'),
             // In the future for primary/replica support, set the following:
             // 'wrapperClass' => \Doctrine\DBAL\Connections\PrimaryReadReplicaConnection::class,
             // 'primary' => [

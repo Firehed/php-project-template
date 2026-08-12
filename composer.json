@@ -28,16 +28,16 @@
         "php": "^8.4",
         "doctrine/migrations": "^3.3",
         "doctrine/orm": "^2.10",
-        "firehed/container": "^0.5",
+        "firehed/container": "^1.1",
         "symfony/cache": "^5.3",
         "vlucas/phpdotenv": "^5.3"
     },
     "require-dev": {
-        "phpstan/phpstan": "^1.0",
-        "phpstan/phpstan-phpunit": "^1.0",
-        "phpstan/phpstan-strict-rules": "^1.0",
-        "phpunit/phpunit": "^9.3",
-        "squizlabs/php_codesniffer": "^3.5"
+        "phpstan/phpstan": "^2.2",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpstan/phpstan-strict-rules": "^2.0",
+        "phpunit/phpunit": "^13.3",
+        "squizlabs/php_codesniffer": "^4.0"
     },
     "scripts": {
         "test": [

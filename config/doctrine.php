@@ -36,6 +36,7 @@ return [
 
         $cache = DoctrineProvider::wrap($c->get('localPsr6Cache'));
 
+        // https://www.doctrine-project.org/projects/doctrine-orm/en/2.10/reference/configuration.html
         $config = Setup::createConfiguration(
             isDevMode: $isDevMode,
             proxyDir: $proxyDir,

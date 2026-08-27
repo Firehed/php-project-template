@@ -20,7 +20,7 @@ services:
       MYSQL_DATABASE: myapp
       MYSQL_USER: myapp
       MYSQL_PASSWORD: myapp
-    image: mysql:8
+    image: mysql:26
     ports:
       # Publishes MySQL port 3306 on the same local port. This makes it easier
       # to use database GUIs and the mysql CLI from your dev machine.
